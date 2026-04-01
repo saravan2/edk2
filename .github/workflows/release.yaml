@@ -52,13 +52,13 @@ jobs:
           source edksetup.sh
           make -C BaseTools
           export GCC5_AARCH64_PREFIX=aarch64-linux-gnu-
-          build -p ArmVirtPkg/ArmVirtCloudHv.dsc -a AARCH64 -t GCC5 -b DEBUG
+          build -p ArmVirtPkg/ArmVirtCloudHv.dsc -a AARCH64 -t GCC5 -b RELEASE
       - name: Upload AArch64 artifact
         if: github.event_name == 'create' && github.event.ref_type == 'tag'
         uses: actions/upload-artifact@v4
         with:
           name: cloudhv-aarch64
-          path: Build/ArmVirtCloudHv-AARCH64/DEBUG_GCC5/FV/CLOUDHV_EFI.fd
+          path: Build/ArmVirtCloudHv-AARCH64/RELEASE_GCC5/FV/CLOUDHV_EFI.fd
 
   release:
     name: Release
